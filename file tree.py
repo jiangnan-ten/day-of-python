@@ -1,5 +1,7 @@
-﻿##目录树
+﻿# 目录树
 import os
+
+
 def travelTree(currentPath, count):
     if not os.path.exists(currentPath):
         return
@@ -10,6 +12,6 @@ def travelTree(currentPath, count):
         print '\t' * count + '├── ' + currentPath
         pathList = os.listdir(currentPath)
         for eachPath in pathList:
-            travelTree(currentPath+'/'+eachPath, count+1)
+            travelTree(currentPath + '/' + eachPath, count + 1)
 
-travelTree('D:\php study\php code',1)
+travelTree('E:\code', 1)
