@@ -1,0 +1,21 @@
+<!-- admin flash消息显示 -->
+
+{% with error = get_flashed_messages(category_filter=["error"]) %}
+  {% if error %}
+    {% for i in error %}
+        var message = $('<div class="valign-wrapper form-info"><i class="small material-icons">warning</i><span class="">'+'{{i}}'+'</span></div>');
+        Materialize.toast(message, 3000, "pink accent-1");
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+{% with success = get_flashed_messages(category_filter=["success"]) %}
+  {% if success %}
+    {% for i in success %}
+        var message = $('<div class="valign-wrapper form-info"><i class="small material-icons">done</i><span class="">'+'{{i}}'+'</span></div>');
+        Materialize.toast(message, 3000, "teal accent-3");
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+

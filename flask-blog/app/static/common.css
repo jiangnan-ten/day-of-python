@@ -1,0 +1,25 @@
+.collection-noborder{
+    border:none;
+}
+
+.collection-noborder .collection-item{
+    border:none;
+}
+
+#column{
+    font-size: 1.25rem;
+}
+
+.item-color li a{
+    color: #37a;
+} 
+
+.item-color li a:hover{
+    color: #fafafa;
+    background-color: #37a
+}
+
+.item-color li a.active{
+    color: #fafafa;
+    background-color: #37a
+}

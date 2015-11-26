@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    {% block head %}
+      <title>{% block title %} {% endblock %}</title>
+      <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='google-font.css')}}">
+      <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='materialize/css/materialize.css')}}" media="screen,projection">
+      <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='admin-common.css')}}">
+    {% endblock %}
+    
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" data-activates="mobile" class="button-collapse">
+            <i class="material-icons">menu</i>
+          </a>
+          <ul class="side-nav" id="mobile">
+            <li><a href="sass.html">控制台</a></li>
+            <li><a href="/admin/write">撰写</a></li>
+            <li><a href="collapsible.html">管理</a></li>
+            <li><a href="mobile.html">设置</a></li>
+          </ul>
+          <ul class="left hide-on-med-and-down">
+            <li><a href="">控制台</a></li>
+            <li><a href="/admin/write">撰写</a></li>
+            <li><a href="" class="dropdown-button" data-beloworigin="true" data-activates="manage" data-hover="true">管理</a></li>
+            <li><a href="">设置</a></li>
+          </ul>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="">登出</a></li>
+            <li><a href="/">网站</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    
+    
+    <!-- 管理下拉 -->
+    <ul id='manage' class='dropdown-content dropdown-color'>
+      <li><a href="/admin/label">标签</a></li>
+      <li><a href="#!">评论</a></li>
+      <li><a href="#!">文章</a></li>
+    </ul>
+    
+    <main><div id="app">{% block content %}{% endblock %}</div></main>
+    
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Tenjj blog</h5>
+            <p class="grey-text text-lighten-4">write with Flask and materialize</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">链接</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">python china</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">php china</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">javascript china</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">mysql china</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2014 Copyright Tenjj
+          <a class="grey-text text-lighten-4 right" href="#!">contact me</a>
+        </div>
+      </div>
+    </footer>
+    
+    {% block script %}
+      <script type="text/javascript" src="{{url_for('static', filename='jquery-2.0.3.js')}}"></script>
+      <script type="text/javascript" src="{{url_for('static', filename='materialize/js/materialize.js')}}"></script>
+      <script type="text/javascript" src="{{url_for('static', filename='vue.js')}}"></script>
+      <script type="text/javascript">
+      $(".button-collapse").sideNav();
+      </script>
+    {% endblock %}
+    
+  </body>
+</html>

@@ -1,0 +1,19 @@
+body{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.dropdown-color li a{
+    color: black;
+}
+
+a {color: gray}
+
+.form-info i{
+    padding-right: 1rem
+}

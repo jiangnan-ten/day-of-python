@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>flask blog</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='google-font.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='materialize/css/materialize.css')}}" media="screen,projection">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='common.css')}}">
+    </head>
+    <body>
+        <div class="row">
+            <div class="col l2">
+                <div id="column">
+                    <ul class="collection with-header center-align collection-noborder">
+                        <li class="collection-header">
+                            <img src="{{url_for('static', filename='images/head.jpg')}}" class="circle responsive-img">
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle black">code</i>
+                            <a href="">技术</a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle blue darken-3">work</i>
+                            <a href="">工具</a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle teal lighten-2">toc</i>
+                            <a href="">资源</a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle pink darken-4">perm_identity</i>
+                            <a href="">生活</a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle lime lighten-2">library_books</i>
+                            <a hrf="">读书</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col l3">
+                <ul class="collection collection-noborder item-color">
+                    <li class="collection-item"><a href="">七种常见经典排序算法总结（C++实现）</a></li>
+                    <li class="collection-item"><a href="">Laravel 关联模型由于名称一致性导致的问题</a></li>
+                    <li class="collection-item"><a href="" class="active">Laravel 核心：控制反转（Inversion of Control）和门面模式（Facade）</a></li>
+                    <li class="collection-item"><a href="">为PHP设置服务器(Apache/Nginx)环境变量</a></li>
+                </ul>
+                <ul class="pagination">
+                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                    <li class="active"><a href="#!">1</a></li>
+                    <li class="waves-effect"><a href="#!">2</a></li>
+                    <li class="waves-effect"><a href="#!">3</a></li>
+                    <li class="waves-effect"><a href="#!">4</a></li>
+                    <li class="waves-effect"><a href="#!">5</a></li>
+                    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                </ul>
+            </div>
+            <div class="col l7">
+                <div class="container">
+                    <h2>Love life, I use Python</h2>
+                </div>
+            </div>
+        </div>
+        
+        <script type="text/javascript" src="{{url_for('static', filename='jquery-2.0.3.js')}}"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='materialize/js/materialize.js')}}"></script>
+    </body>
+</html>

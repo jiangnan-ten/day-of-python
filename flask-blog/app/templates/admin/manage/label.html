@@ -1,0 +1,94 @@
+{% extends "admin/base.html" %}
+{% block title %}标签管理{% endblock %}
+{% block head %}
+    {{super()}}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h5>标签</h5>
+        </div>
+        <div class="row">
+            <div class="col l8">
+                <div class="row">
+                    <table class="highlight responsive-table">
+                        <thead>
+                            <tr>
+                                <th>名称</th>
+                                <th>文章数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in label_data %}
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="{{ i.label_name }}"  class="filled-in"/>
+                                    <label for="{{ i.label_name }}" class="changename" data-labelid={{ i.label_id }}>{{ i.label_name }}</label>
+                                </td>
+                                <td>20</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <i class="material-icons">delete</i>
+                </div>
+            </div>
+            <div class="col l4">
+                <div class="container">
+                    <form method="post" action="{{url_for('admin.manage/label')}}">
+                        <input type="hidden" value="{{csrf_token()}}" name="_csrf_token">
+                        <div class="row">
+                            <div class="input-field">
+                                <label>标签名称</label>
+                                <input type="text" length="20" name="label_name">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field">
+                                <label>标签描述</label>
+                                <textarea class="materialize-textarea" length="50" name="description"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="waves-effect waves-light btn submit">增加</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    {{super()}}
+<script type="text/javascript" src="{{url_for('static', filename='admin-common.js')}}"></script>
+<script type="text/javascript">
+    {% include 'admin/admin-forminfo.html' %}
+    
+    /*修改标签名*/
+    $('.changename').dblclick(function() {
+        var label_id = $(this).data('labelid');
+        var csrftoken = "{{ csrf_token() }}"
+
+        beforeajax(csrftoken)
+        $(this).text('').after('<input type="text" style="width:30%" name="change_label_name">')
+        
+        $('input[name="change_label_name"]').keypress(function(e) {
+            if(e.which == 13) {
+                var change_label_name = $('input[name="change_label_name"]').val()
+                if($.trim(change_label_name)) {
+                    $.post('/admin/changelabelname/'+label_id, {
+                        change_label_name: change_label_name
+                    }, function(res) {
+                        if(res.res) {
+                            location.reload()
+                        }
+                    }, 'json')
+                }
+            }
+        })
+    })
+</script>
+{% endblock %}
