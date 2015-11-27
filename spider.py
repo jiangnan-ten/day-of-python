@@ -80,11 +80,11 @@ if __name__ == '__main__':
     for x in range(1, 5):
         t = threading.Thread(target=myThread, name='thread-%d' % x)
         threadBox.append(t)
+        t.start()
 
     # 线程开始工作
     if len(threadBox) > 0:
         for i in threadBox:
-            i.start()
             i.join()
 
     print "done"
