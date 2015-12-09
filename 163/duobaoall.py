@@ -164,6 +164,8 @@ def getAllUrl(firstPage, lastPage):
 
     return urlbox
 
+# {gid, period} 集合入队列
+
 
 def putToQueue():
     while True:
@@ -178,41 +180,28 @@ def putToQueue():
                     gid_period_queue.put_nowait(i)
 
 
+def threadPool(func, thread_num):
+    threadBox = []
+    for x in range(thread_num):
+        t = threading.Thread(target=func)
+        threadBox.append(t)
+        t.start()
+
+    if len(threadBox) > 0:
+        for i in threadBox:
+            i.join()
+
 if __name__ == '__main__':
     mylogger = myLog()
     urlbox = getAllUrl(1, 9)
-    map = findExist()
 
     if urlbox:
+        map = findExist()
         queue_url = queueWork(urlbox)
         gid_period_queue = Queue.Queue()
-        threadBoxDict = []
-
-        for m in range(3):
-            n = threading.Thread(target=putToQueue)
-            threadBoxDict.append(n)
-            n.start()
-
-        if len(threadBoxDict) > 0:
-            for i in threadBoxDict:
-                i.join()
+        threadPool(putToQueue, 3)
 
         if gid_period_queue.qsize() > 0:
-
             mylogger.info(u'所有商品已入队列, 开始分析数据....')
-
-            # 加入线程池 线程池里面存放4个线程
-            threadBox = []
-
-            # 线程初始化
-            for x in range(1, 15):
-                t = threading.Thread(target=core)
-                threadBox.append(t)
-                t.start()
-
-            # 线程开始工作
-            if len(threadBox) > 0:
-                for i in threadBox:
-                    i.join()
-
+            threadPool(core, 15)
             mylogger.info("All done!")

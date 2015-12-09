@@ -91,7 +91,7 @@ function findProvince($province_id)
 
     if( !empty($province_id) )
     {
-        $sql = "select gname, count(gid) as total from ". TABLE ." where owner_ip_addr like '$province_id%' group by gid";
+        $sql = "select gname, count(gid) as total from ". TABLE ." where owner_ip_addr like '$province_id%' group by gid order by total desc limit 30";
 
         $res = $db->findAll($sql);
     }
@@ -131,7 +131,7 @@ function getUserAward($cid)
 
     if( $cid )
     {
-        $sql = "select count(1) as total, gname from ". TABLE ." where cid = '$cid' group by gid order by total desc";
+        $sql = "select count(1) as total, gname from ". TABLE ." where cid = '$cid' group by gid order by total desc limit 20";
         $res = $db->findAll($sql);
     }
 

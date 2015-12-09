@@ -6,5 +6,5 @@ sys.setdefaultencoding("utf-8")
 
 a = [1, 2, 3, 4, 5, 7]
 
-if i > 2 for i in a:
+for i in range(1, 5):
     print i
