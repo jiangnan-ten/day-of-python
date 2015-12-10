@@ -2,7 +2,7 @@
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
-define('TABLE', 'duobao_all');
+define('TABLE', 'duobao');
 
 class Mysql
 {
@@ -10,11 +10,11 @@ class Mysql
 
     public function __construct()
     {
-        $con = mysql_connect('127.0.0.1', 'root', '');
+        $con = mysql_connect('127.0.0.1', 'root', '111');
         if ($con) 
         {
             mysql_query('set names utf8');
-            mysql_selectdb('test2');
+            mysql_selectdb('ten');
 
             return $this->con = $con;
         }

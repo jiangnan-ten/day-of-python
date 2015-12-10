@@ -36,7 +36,7 @@ class mySql():
     def __init__(self):
         try:
             self.con = MySQLdb.connect(
-                host='127.0.0.1', user='root', passwd='', db='test2', charset="utf8")
+                host='127.0.0.1', user='root', passwd='111', db='ten', charset="utf8")
             self.cursor = self.con.cursor()
         except Exception, e:
             mylogger.info(e)
